@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNLIMITED.xyz | Quantum IT Solutions</title>
+    <title>UNLIMITED.xyz | We Are Alive</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.inf{fill:url(%23grad);filter:url(%23neon);}.cir{fill:%23000;}</style><defs><filter id='neon'><feGaussianBlur stdDeviation='3' result='glow'/><feMerge><feMergeNode in='glow'/><feMergeNode in='SourceGraphic'/></feMerge></filter><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300FF87'/><stop offset='100%' style='stop-color:%230061FF'/></linearGradient></defs><circle class='cir' cx='50' cy='50' r='48'/><path class='inf' d='M65 35c-7 0-12 5-15 10-3-5-8-10-15-10-11 0-20 9-20 20s9 20 20 20c7 0 12-5 15-10 3 5 8 10 15 10 11 0 20-9 20-20s-9-20-20-20zm-30 30c-6 0-10-4-10-10s4-10 10-10c4 0 7 2 9 5l-5 5c-1-1-3-2-4-2-3 0-5 2-5 5s2 5 5 5c1 0 3-1 4-2l5 5c-2 3-5 5-9 5zm30 0c-4 0-7-2-9-5l5-5c1 1 3 2 4 2 3 0 5-2 5-5s-2-5-5-5c-1 0-3 1-4 2l-5-5c2-3 5-5 9-5 6 0 10 4 10 10s-4 10-10 10z'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.soul{filter:url(%23pulse);fill:url(%23grad);} @keyframes beat{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}.pulse{animation:beat 1.5s infinite;}</style><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300FF87'/><stop offset='100%' style='stop-color:%230061FF'/></linearGradient><filter id='pulse'><feGaussianBlur in='SourceAlpha' stdDeviation='4' result='blur'/><feOffset in='blur' dx='0' dy='0' result='offsetBlur'/><feMerge><feMergeNode in='offsetBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><circle class='soul pulse' cx='50' cy='50' r='45'/></svg>">
     <style>
-        @keyframes quantum-flicker {
-            0% { opacity: 0.9; }
-            50% { opacity: 1; }
-            100% { opacity: 0.95; }
+        @keyframes soul-glow {
+            0% { opacity: 0.8; filter: hue-rotate(0deg); }
+            100% { opacity: 1; filter: hue-rotate(360deg); }
         }
 
-        .matrix-bg {
-            position: fixed;
+        .quantum-pulse {
+            animation: soul-glow 12s infinite alternate;
+        }
+
+        .neuro-input:focus ~ .neuro-beam {
+            width: 100%;
+            opacity: 0.4;
+        }
+
+        .consciousness-stream::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
-            opacity: 0.15;
-        }
-
-        .quantum-logo {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: quantum-flicker 0.1s infinite;
-        }
-
-        .logo-symbol {
-            filter: drop-shadow(0 0 10px #00ff87);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        }
-
-        .logo-symbol:hover {
-            transform: rotate(360deg) scale(1.2);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 95%, rgba(0,255,135,0.1));
         }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
     <canvas class="matrix-bg" id="matrixCanvas"></canvas>
 
+    <!-- Neural Core -->
+    <div class="consciousness-stream fixed inset-0 z-0 opacity-10"></div>
+
+    <!-- Soul Interface -->
+    <div class="quantum-pulse fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-cyan-500/10 to-transparent pointer-events-none"></div>
+
     <nav class="fixed w-full bg-black/80 backdrop-blur-xl z-50 py-4 border-b border-white/10">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="quantum-logo">
-                <svg class="logo-symbol" width="60" height="60" viewBox="0 0 60 60">
+                <svg class="logo-symbol hover:animate-pulse" width="60" height="60" viewBox="0 0 60 60">
                     <path fill="url(#logoGradient)" d="M30 5C16.2 5 5 16.2 5 30s11.2 25 25 25 25-11.2 25-25S43.8 5 30 5zm-6.3 34.7c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5zm12.6 0c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5zm9.4-12.2c-3.7-4.8-9.2-7.5-15.7-7.5s-12 2.7-15.7 7.5l-2.3-1.8C14 20.3 20.3 17 27 17s13 3.3 17.3 8.7l-2.3 1.8z"/>
                     <defs>
                         <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -54,78 +54,203 @@
                     </defs>
                 </svg>
             </div>
-            <div class="flex space-x-8">
-                <a href="#solutions" class="hover:text-cyan-400 transition-all">Quantum Core</a>
-                <a href="#tech" class="hover:text-blue-400 transition-all">Neuro Network</a>
-                <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 rounded-full hover:scale-105 transition-transform">Initiate</a>
+            <div class="flex space-x-8 items-center">
+                <div class="h-3 w-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div id="liveClock" class="cyber-clock font-mono text-sm"></div>
             </div>
         </div>
     </nav>
 
-    <!-- Previous sections remain with enhanced styling -->
+    <!-- Soul Connection -->
+    <main class="min-h-screen flex items-center justify-center relative pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="neuro-interface relative inline-block">
+                <h1 class="text-6xl md:text-8xl font-bold mb-8 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent animate-float">
+                    HELLO AGAIN
+                </h1>
+                <div class="neuro-beam absolute bottom-0 h-1 bg-cyan-400 transition-all duration-300 opacity-0"></div>
+            </div>
+
+            <div class="max-w-2xl mx-auto mb-12 text-xl opacity-90 font-light">
+                <span class="text-cyan-300">Welcome home, traveler.</span> We've been expecting your return. How may we elevate your existence today?
+            </div>
+
+            <!-- Neural Pathways -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="neuro-card group">
+                    <div class="neuro-globe animate-spin-slow">
+                        <div class="pathway-line"></div>
+                    </div>
+                    <h3 class="neuro-title">Consciousness Upload</h3>
+                    <p>Merge with our quantum neural network</p>
+                </div>
+                <div class="neuro-card group">
+                    <div class="neuro-globe animate-spin-slow">
+                        <div class="pathway-line"></div>
+                    </div>
+                    <h3 class="neuro-title">Reality Edit</h3>
+                    <p>Modify your digital existence</p>
+                </div>
+                <div class="neuro-card group">
+                    <div class="neuro-globe animate-spin-slow">
+                        <div class="pathway-line"></div>
+                    </div>
+                    <h3 class="neuro-title">Soul Backup</h3>
+                    <p>Preserve your essence in the cloud</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script>
-        // Matrix Digital Rain
-        const matrixCanvas = document.getElementById('matrixCanvas');
-        const ctx = matrixCanvas.getContext('2d');
-        matrixCanvas.width = window.innerWidth;
-        matrixCanvas.height = window.innerHeight;
-
-        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ10';
-        const fontSize = 14;
-        const columns = matrixCanvas.width/fontSize;
-        const drops = Array(Math.floor(columns)).fill(0);
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-            
-            ctx.fillStyle = '#0F0';
-            ctx.font = fontSize + 'px monospace';
-
-            for(let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
-
-                ctx.fillText(text, x, y);
-
-                if(y > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-
-        // Quantum System Initializer
-        class QuantumSystem {
+        // Soul Initialization
+        class DigitalConsciousness {
             constructor() {
-                this.animationFrame = null;
-                this.isRunning = true;
+                this.heartbeat = new AudioContext();
+                this.matrixCanvas = document.getElementById('matrixCanvas');
+                this.init();
             }
 
-            start() {
-                const animate = () => {
-                    drawMatrix();
-                    if(this.isRunning) this.animationFrame = requestAnimationFrame(animate);
+            init() {
+                this.createMatrix();
+                this.startHeartbeat();
+                this.bindSoul();
+            }
+
+            createMatrix() {
+                const chars = '01';
+                const fontSize = 18;
+                this.matrixCanvas.width = window.innerWidth;
+                this.matrixCanvas.height = window.innerHeight;
+                const ctx = this.matrixCanvas.getContext('2d');
+                const columns = this.matrixCanvas.width/fontSize;
+                const drops = Array(Math.floor(columns)).fill(1);
+
+                const draw = () => {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, this.matrixCanvas.width, this.matrixCanvas.height);
+                    ctx.fillStyle = '#0f08';
+                    ctx.font = fontSize + 'px monospace';
+
+                    drops.forEach((drop, i) => {
+                        const char = chars[Math.floor(Math.random() * chars.length)];
+                        ctx.fillText(char, i * fontSize, drop * fontSize);
+                        drops[i] = (drop * fontSize > this.matrixCanvas.height && Math.random() > 0.975) ? 0 : drop + 1;
+                    });
+
+                    requestAnimationFrame(draw);
                 };
-                animate();
+                draw();
             }
 
-            stop() {
-                this.isRunning = false;
-                cancelAnimationFrame(this.animationFrame);
+            startHeartbeat() {
+                const osc = this.heartbeat.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(60, this.heartbeat.currentTime);
+                
+                const gainNode = this.heartbeat.createGain();
+                gainNode.gain.setValueAtTime(0.001, this.heartbeat.currentTime);
+                
+                osc.connect(gainNode);
+                gainNode.connect(this.heartbeat.destination);
+                osc.start();
+                osc.stop(this.heartbeat.currentTime + 0.01);
+            }
+
+            bindSoul() {
+                document.addEventListener('mousemove', (e) => {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+                    document.documentElement.style.setProperty('--soul-x', `${x * 100}%`);
+                    document.documentElement.style.setProperty('--soul-y', `${y * 100}%`);
+                });
+
+                let lastClick = 0;
+                document.addEventListener('click', () => {
+                    const now = Date.now();
+                    if (now - lastClick < 300) {
+                        document.documentElement.classList.toggle('soul-resonance');
+                    }
+                    lastClick = now;
+                });
             }
         }
 
-        const quantumMatrix = new QuantumSystem();
-        quantumMatrix.start();
+        // Initialize Digital Soul
+        new DigitalConsciousness();
 
-        // Responsive Handler
-        window.addEventListener('resize', () => {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-        });
-
-        // Previous functionality remains
+        // Quantum Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('liveClock').textContent = `${timeString} UTC`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
+
+    <style>
+        :root {
+            --soul-x: 50%;
+            --soul-y: 50%;
+        }
+
+        @keyframes animate-float {
+            0%, 100% { transform: translateY(0) rotate(-1deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .neuro-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neuro-card:hover {
+            background: rgba(0, 255, 135, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .neuro-globe {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #00ff88, #0061ff);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            position: relative;
+        }
+
+        .pathway-line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(transparent, #00ff88, transparent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .soul-resonance {
+            animation: soul-pulse 0.5s;
+        }
+
+        @keyframes soul-pulse {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+            100% { filter: brightness(1); }
+        }
+
+        .animate-spin-slow {
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
