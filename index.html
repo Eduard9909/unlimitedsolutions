@@ -3,159 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlimited Solutions | Future-Ready IT Support</title>
+    <title>UNLIMITED.xyz | Live Cyber Support</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes gradient-pulse {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes hologram {
+            0% { filter: hue-rotate(0deg) saturate(200%); }
+            100% { filter: hue-rotate(360deg) saturate(200%); }
         }
 
-        .hero-text {
-            background: linear-gradient(45deg, #00ff87, #60efff, #0061ff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradient-pulse 8s ease infinite;
+        .cyber-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        .cyber-border {
-            position: relative;
-            overflow: hidden;
+        @keyframes pulse {
+            50% { opacity: 0.2; }
         }
 
-        .cyber-border::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00ff87, #0061ff, #60efff);
-            z-index: -1;
-            animation: gradient-pulse 4s linear infinite;
+        .terminal {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #000 0%, #001919 100%);
+            border: 1px solid #00ff8733;
         }
 
-        .particle-network {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
+        .glow-text {
+            text-shadow: 0 0 10px #00ff87, 0 0 20px #00ff87, 0 0 30px #00ff87;
         }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
-    <canvas class="particle-network" id="particleCanvas"></canvas>
-
-    <nav class="fixed w-full bg-black/80 backdrop-blur-xl z-50 py-4 border-b border-white/10">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                UNLIMITED.xyz
-            </div>
-            <div class="space-x-8">
-                <a href="#solutions" class="hover:text-cyan-400 transition-all">Solutions</a>
-                <a href="#tech" class="hover:text-blue-400 transition-all">Technology</a>
-                <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 rounded-full hover:scale-105 transition-transform">Launch Now</a>
-            </div>
-        </div>
-    </nav>
-
-    <section class="min-h-screen flex items-center justify-center relative pt-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="hero-text text-7xl md:text-9xl font-bold mb-8 leading-tight">
-                <span class="text-outline">HELLO AGAIN WORLD</span>
-                <div class="text-3xl md:text-5xl mt-6 font-light opacity-80">We Are Back</div>
-            </h1>
-            
-            <div class="max-w-4xl mx-auto mb-12 text-xl opacity-90">
-                Redefining reality through next-generation remote support systems. Zero latency, maximum security, infinite possibilities.
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div class="cyber-border p-6 bg-black/30 backdrop-blur-lg">
-                    <div class="text-4xl mb-2">24/7</div>
-                    <div class="text-sm opacity-75">Global Coverage</div>
+    <!-- Live Status Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-xl z-50 p-3 border-t border-cyan-500/20">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="ml-2 text-sm">SYSTEMS ONLINE</span>
                 </div>
-                <div class="cyber-border p-6 bg-black/30 backdrop-blur-lg">
-                    <div class="text-4xl mb-2">0ms</div>
-                    <div class="text-sm opacity-75">Response Time</div>
+                <div class="text-sm opacity-75">
+                    ACTIVE SUPPORT REQUESTS: <span id="activeRequests" class="font-bold">1,243</span>
                 </div>
-                <div class="cyber-border p-6 bg-black/30 backdrop-blur-lg">
-                    <div class="text-4xl mb-2">∞</div>
-                    <div class="text-sm opacity-75">Solutions</div>
+            </div>
+            <div class="flex space-x-4">
+                <div class="text-sm opacity-75">
+                    LIVE AGENTS: <span id="liveAgents" class="font-bold">89</span>
                 </div>
-                <div class="cyber-border p-6 bg-black/30 backdrop-blur-lg">
-                    <div class="text-4xl mb-2">100%</div>
-                    <div class="text-sm opacity-75">Uptime</div>
+                <div class="text-sm opacity-75">
+                    GLOBAL NODES: <span class="font-bold">∞</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <script>
-        // Particle network animation
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    <!-- Live Network Monitor -->
+    <div class="container mx-auto px-6 py-20">
+        <div class="cyber-border p-1 bg-black/30">
+            <div class="bg-black p-6">
+                <h2 class="text-3xl mb-6 glow-text">LIVE NETWORK ACTIVITY</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="terminal p-4">
+                        <div class="text-green-400">$ root@unlimited.xyz ~ active_connections</div>
+                        <div id="networkTraffic" class="mt-2 h-48 overflow-y-auto"></div>
+                    </div>
+                    <div class="terminal p-4">
+                        <div class="text-cyan-400">$ root@unlimited.xyz ~ threat_monitor</div>
+                        <div id="threatLevel" class="mt-4 h-48 relative">
+                            <div class="absolute bottom-0 w-full bg-green-500/20" style="height: 2%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const particles = [];
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 3 - 1.5;
-                this.speedY = Math.random() * 3 - 1.5;
-            }
+    <!-- AI Command Interface -->
+    <div class="container mx-auto px-6 py-20">
+        <div class="cyber-border p-1 bg-black/30 backdrop-blur-lg">
+            <div class="bg-black p-6">
+                <h2 class="text-3xl mb-6 glow-text">LIVE SUPPORT CONSOLE</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="terminal p-4">
+                        <div class="text-blue-400">$ diagnostics_suite --live</div>
+                        <canvas id="systemHealth" class="mt-4 w-full h-48"></canvas>
+                    </div>
+                    <div class="terminal p-4">
+                        <div class="text-purple-400">$ quantum_encryption --status</div>
+                        <div id="encryptionStatus" class="mt-4 text-4xl text-center">🛡️ 256-QBIT</div>
+                    </div>
+                    <div class="terminal p-4">
+                        <div class="text-yellow-400">$ emergency_response --ready</div>
+                        <button class="mt-4 w-full bg-red-500/20 hover:bg-red-500/40 p-4 transition-all">
+                            INITIATE CRITICAL RESPONSE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
+    <!-- Live Chat Interface -->
+    <div class="fixed right-6 bottom-20 z-50">
+        <div class="bg-black/80 backdrop-blur-xl border border-cyan-500/30 rounded-lg shadow-2xl">
+            <div class="p-4 border-b border-cyan-500/20">
+                <div class="flex items-center">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="ml-2">LIVE SUPPORT CHAT</span>
+                </div>
+            </div>
+            <div id="chatWindow" class="h-64 w-72 overflow-y-auto p-4">
+                <div class="text-cyan-400 text-sm">System: Connection established</div>
+                <div class="text-green-400 text-sm mt-2">Operator: How can we assist?</div>
+            </div>
+            <input type="text" 
+                   class="w-full bg-transparent p-4 border-t border-cyan-500/20 focus:outline-none" 
+                   placeholder="Type command..."
+                   id="chatInput">
+        </div>
+    </div>
 
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
+<script>
+    // Live Network Simulation
+    function generateIP() {
+        return Array.from({length: 4}, () => Math.floor(Math.random() * 255)).join('.');
+    }
 
-            draw() {
-                ctx.fillStyle = 'rgba(96, 239, 255, 0.5)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+    function updateNetwork() {
+        const traffic = document.getElementById('networkTraffic');
+        traffic.innerHTML = Array.from({length: 8}, () => 
+            `<div class="text-xs mono-font text-green-400">${generateIP()} ⟶ UNLIMITED-CLOUD</div>`
+        ).join('');
+        
+        // Update threat level
+        const threat = document.getElementById('threatLevel');
+        threat.style.height = `${Math.random() * 30 + 2}%`;
+        threat.style.backgroundColor = `hsl(${Math.random() * 60}, 100%, 50%, 0.2)`;
+    }
+
+    // System Health Chart
+    const ctx = document.getElementById('systemHealth').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: 20}, (_, i) => i + 's'),
+            datasets: [{
+                data: Array.from({length: 20}, () => Math.random() * 100),
+                borderColor: '#00ff87',
+                tension: 0.4,
+                borderWidth: 2,
+                fill: true,
+                backgroundColor: '#00ff8820'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { y: { display: false }, x: { display: false } }
         }
+    });
 
-        function init() {
-            for (let i = 0; i < 100; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Live Chat Simulation
+    document.getElementById('chatInput').addEventListener('keypress', (e) => {
+        if(e.key === 'Enter') {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.innerHTML += `<div class="text-right text-blue-400">You: ${e.target.value}</div>`;
+            chatWindow.scrollTop = chatWindow.scrollHeight;
             
-            for (let particle of particles) {
-                particle.update();
-                particle.draw();
-            }
+            // Simulate response
+            setTimeout(() => {
+                chatWindow.innerHTML += `<div class="text-green-400">Operator: Command received. Processing...</div>`;
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }, 500);
             
-            requestAnimationFrame(animate);
+            e.target.value = '';
         }
+    });
 
-        init();
-        animate();
+    // Live Stats Updater
+    setInterval(() => {
+        document.getElementById('activeRequests').textContent = 
+            Math.floor(Math.random() * 500 + 1000).toLocaleString();
+        
+        document.getElementById('liveAgents').textContent = 
+            Math.floor(Math.random() * 10 + 85);
+    }, 3000);
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    // Initial network update
+    setInterval(updateNetwork, 1000);
+    updateNetwork();
+</script>
 </body>
 </html>
