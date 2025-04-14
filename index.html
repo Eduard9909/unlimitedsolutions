@@ -1,0 +1,380 @@
+<script type="text/javascript">
+    var gk_fileData = {};
+    function loadFileData(filename) {
+      return gk_fileData[filename] || "";
+    }
+    </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reliable remote IT support for printers, routers, slow computers, and more. No Windows Server support. Based in Cape Town, serving clients globally.">
+    <title>Unlimited Solutions - Remote IT Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #000000;
+            color: #FFFFFF;
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #1a1a1a;
+            border-bottom: 1px solid #FFFFFF;
+        }
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #CCCCCC;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        #hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        #hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        #hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: #000000;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 1em;
+            border: 3px solid #FFFFFF;
+            border-radius: 50px;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        .btn:hover {
+            background: #FFFFFF;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        #services h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .service-category {
+            margin-bottom: 50px;
+        }
+        .service-category h3 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .service-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .service-box {
+            background: #1a1a1a;
+            padding: 20px;
+            border: 1px solid #FFFFFF;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .service-box:nth-child(1) { animation-delay: 0.1s; }
+        .service-box:nth-child(2) { animation-delay: 0.2s; }
+        .service-box:nth-child(3) { animation-delay: 0.3s; }
+        .service-box:nth-child(4) { animation-delay: 0.4s; }
+        .service-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        .service-box i {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        .service-box p {
+            font-size: 0.95em;
+            margin: 0;
+        }
+        #why-choose-us {
+            margin-top: 60px;
+            text-align: center;
+        }
+        #why-choose-us h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #why-choose-us ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #why-choose-us li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        #why-choose-us i {
+            margin-right: 10px;
+        }
+        #testimonials {
+            margin-top: 60px;
+        }
+        #testimonials h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        .testimonial {
+            background: #1a1a1a;
+            padding: 20px;
+            border: 1px solid #FFFFFF;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .testimonial:nth-child(1) { animation-delay: 0.5s; }
+        .testimonial:nth-child(2) { animation-delay: 0.6s; }
+        .testimonial p {
+            font-size: 1em;
+        }
+        #contact {
+            margin-top: 60px;
+            text-align: center;
+        }
+        #contact h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        #contact label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1em;
+        }
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #FFFFFF;
+            background: #1a1a1a;
+            color: #FFFFFF;
+            border-radius: 4px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1em;
+        }
+        #contact button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #000000;
+            color: #FFFFFF;
+            border: 3px solid #FFFFFF;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        #contact button:hover {
+            background: #FFFFFF;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            border-top: 1px solid #FFFFFF;
+            margin-top: 60px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav a {
+                margin: 10px;
+            }
+            #hero h1 {
+                font-size: 1.8em;
+            }
+            #hero p {
+                font-size: 1em;
+            }
+            .service-boxes {
+                grid-template-columns: 1fr;
+            }
+            main {
+                padding: 20px 15px;
+            }
+        }
+        @media (min-width: 1200px) {
+            #hero h1 {
+                font-size: 3em;
+            }
+            #services h2, #why-choose-us h2, #testimonials h2, #contact h2 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Unlimited Solutions</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#why-choose-us">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h1>Reliable Remote IT Support</h1>
+            <p>Fix printers, routers, slow computers, and more—anywhere, anytime, without the hassle.</p>
+            <a href="#contact" class="btn">Request Support Now</a>
+        </section>
+        <section id="services">
+            <h2>Our Remote IT Solutions</h2>
+            <div class="service-category">
+                <h3>Device & Software Support</h3>
+                <div class="service-boxes">
+                    <div class="service-box">
+                        <i class="fas fa-print" title="Printer & Scanner Setup"></i>
+                        <p>Printer & Scanner Setup</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-desktop" title="Computer Optimization"></i>
+                        <p>Computer Optimization</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-code" title="Software Troubleshooting"></i>
+                        <p>Software Troubleshooting</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-category">
+                <h3>Network Support</h3>
+                <div class="service-boxes">
+                    <div class="service-box">
+                        <i class="fas fa-wifi" title="Router Setup & Troubleshooting"></i>
+                        <p>Router Setup & Troubleshooting</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-shield-alt" title="Network Security Monitoring"></i>
+                        <p>Network Security Monitoring</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-lock" title="VPN & Firewall Setup"></i>
+                        <p>VPN & Firewall Setup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="service-category">
+               ♥<h3>Cloud & Productivity</h3>
+                <div class="service-boxes">
+                    <div class="service-box">
+                        <i class="fas fa-user-shield" title="Entra ID Management"></i>
+                        <p>Entra ID Management</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-cloud" title="Azure Configuration"></i>
+                        <p>Azure Configuration</p>
+                    </div>
+                    <div class="service-box">
+                        <i class="fas fa-microsoft" title="Office 365 Support"></i>
+                        <p>Office 365 Support</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.9em; margin-top: 20px;">
+                Note: We do not provide Windows Server support.
+            </p>
+            <a href="#contact" class="btn">Explore Remote Support Options</a>
+        </section>
+        <section id="why-choose-us">
+            <h2>Why Trust Us?</h2>
+            <ul>
+                <li><i class="fas fa-globe"></i> Global remote support from Cape Town</li>
+                <li><i class="fas fa-tools"></i> Expert help for printers, routers, and slow computers</li>
+                <li><i class="fas fa-cloud"></i> Full support for Entra ID, Azure, and Office 365</li>
+                <li><i class="fas fa-ban"></i> No Windows Server support</li>
+            </ul>
+        </section>
+        <section id="testimonials">
+            <h2>Client Success Stories</h2>
+            <div class="testimonial">
+                <p>"They fixed my router in minutes remotely—saved my workday!"</p>
+                <p>- Emma T., Home Office Worker</p>
+            </div>
+            <div class="testimonial">
+                <p>"Office 365 setup was a breeze with their help. Top-notch service."</p>
+                <p>- Mark L., Small Business Owner</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Need Help? Reach Out</h2>
+            <form action="https://formspree.io/f/mqapjaog" method="POST">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Unlimited Solutions. All rights reserved.</p>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
