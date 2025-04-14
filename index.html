@@ -3,95 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNLIMITED.xyz | Live Cyber Support</title>
+    <title>UNLIMITED.xyz | Quantum IT Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.inf{fill:url(%23grad);} .cir{fill:%23000;}</style><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300FF87'/><stop offset='100%' style='stop-color:%230061FF'/></linearGradient></defs><circle class='cir' cx='50' cy='50' r='48'/><path class='inf' d='M65 35c-7 0-12 5-15 10-3-5-8-10-15-10-11 0-20 9-20 20s9 20 20 20c7 0 12-5 15-10 3 5 8 10 15 10 11 0 20-9 20-20s-9-20-20-20zm-30 30c-6 0-10-4-10-10s4-10 10-10c4 0 7 2 9 5l-5 5c-1-1-3-2-4-2-3 0-5 2-5 5s2 5 5 5c1 0 3-1 4-2l5 5c-2 3-5 5-9 5zm30 0c-4 0-7-2-9-5l5-5c1 1 3 2 4 2 3 0 5-2 5-5s-2-5-5-5c-1 0-3 1-4 2l-5-5c2-3 5-5 9-5 6 0 10 4 10 10s-4 10-10 10z'/></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.inf{fill:url(%23grad);filter:url(%23neon);}.cir{fill:%23000;}</style><defs><filter id='neon'><feGaussianBlur stdDeviation='3' result='glow'/><feMerge><feMergeNode in='glow'/><feMergeNode in='SourceGraphic'/></feMerge></filter><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%2300FF87'/><stop offset='100%' style='stop-color:%230061FF'/></linearGradient></defs><circle class='cir' cx='50' cy='50' r='48'/><path class='inf' d='M65 35c-7 0-12 5-15 10-3-5-8-10-15-10-11 0-20 9-20 20s9 20 20 20c7 0 12-5 15-10 3 5 8 10 15 10 11 0 20-9 20-20s-9-20-20-20zm-30 30c-6 0-10-4-10-10s4-10 10-10c4 0 7 2 9 5l-5 5c-1-1-3-2-4-2-3 0-5 2-5 5s2 5 5 5c1 0 3-1 4-2l5 5c-2 3-5 5-9 5zm30 0c-4 0-7-2-9-5l5-5c1 1 3 2 4 2 3 0 5-2 5-5s-2-5-5-5c-1 0-3 1-4 2l-5-5c2-3 5-5 9-5 6 0 10 4 10 10s-4 10-10 10z'/></svg>">
     <style>
-        @keyframes hologram {
-            0% { filter: hue-rotate(0deg) saturate(200%); }
-            100% { filter: hue-rotate(360deg) saturate(200%); }
-        }
-
-        .cyber-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes pulse {
-            50% { opacity: 0.2; }
-        }
-
-        .terminal {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(45deg, #000 0%, #001919 100%);
-            border: 1px solid #00ff8733;
-        }
-
-        .glow-text {
-            text-shadow: 0 0 10px #00ff87, 0 0 20px #00ff87, 0 0 30px #00ff87;
-        }
-
-        .cyber-clock {
-            font-family: 'Courier New', monospace;
-            text-shadow: 0 0 10px #00ff87;
-            background: linear-gradient(45deg, #00ff87, #0061ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        @keyframes colon-blink {
-            0% { opacity: 0.5; }
+        @keyframes quantum-flicker {
+            0% { opacity: 0.9; }
             50% { opacity: 1; }
-            100% { opacity: 0.5; }
+            100% { opacity: 0.95; }
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .quantum-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: quantum-flicker 0.1s infinite;
+        }
+
+        .logo-symbol {
+            filter: drop-shadow(0 0 10px #00ff87);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .logo-symbol:hover {
+            transform: rotate(360deg) scale(1.2);
         }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
-    <!-- Live Status Bar -->
-    <div class="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-xl z-50 p-3 border-t border-cyan-500/20">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="ml-2 text-sm">SYSTEMS ONLINE</span>
-                </div>
-                <div class="text-sm opacity-75">
-                    ACTIVE SUPPORT REQUESTS: <span id="activeRequests" class="font-bold">1,243</span>
-                </div>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+    <nav class="fixed w-full bg-black/80 backdrop-blur-xl z-50 py-4 border-b border-white/10">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="quantum-logo">
+                <svg class="logo-symbol" width="60" height="60" viewBox="0 0 60 60">
+                    <path fill="url(#logoGradient)" d="M30 5C16.2 5 5 16.2 5 30s11.2 25 25 25 25-11.2 25-25S43.8 5 30 5zm-6.3 34.7c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5zm12.6 0c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5zm9.4-12.2c-3.7-4.8-9.2-7.5-15.7-7.5s-12 2.7-15.7 7.5l-2.3-1.8C14 20.3 20.3 17 27 17s13 3.3 17.3 8.7l-2.3 1.8z"/>
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00FF87"/>
+                            <stop offset="100%" style="stop-color:#0061FF"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
             </div>
-            <div class="flex space-x-4">
-                <div id="liveClock" class="cyber-clock text-sm font-bold"></div>
-                <div class="text-sm opacity-75">
-                    LIVE AGENTS: <span id="liveAgents" class="font-bold">89</span>
-                </div>
-                <div class="text-sm opacity-75">
-                    GLOBAL NODES: <span class="font-bold">∞</span>
-                </div>
+            <div class="flex space-x-8">
+                <a href="#solutions" class="hover:text-cyan-400 transition-all">Quantum Core</a>
+                <a href="#tech" class="hover:text-blue-400 transition-all">Neuro Network</a>
+                <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-2 rounded-full hover:scale-105 transition-transform">Initiate</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Previous content remains the same -->
+    <!-- Previous sections remain with enhanced styling -->
 
     <script>
-        // Live Clock Functionality
-        function updateClock() {
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
+        // Matrix Digital Rain
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const ctx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ10';
+        const fontSize = 14;
+        const columns = matrixCanvas.width/fontSize;
+        const drops = Array(Math.floor(columns)).fill(0);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
             
-            document.getElementById('liveClock').innerHTML = `
-                ${hours}<span class="animate-colon">:</span>${minutes}<span class="animate-colon">:</span>${seconds} UTC
-            `;
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(text, x, y);
+
+                if(y > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
         }
 
-        // Update clock every second
-        setInterval(updateClock, 1000);
-        updateClock(); // Initial call
+        // Quantum System Initializer
+        class QuantumSystem {
+            constructor() {
+                this.animationFrame = null;
+                this.isRunning = true;
+            }
 
-        // Previous JavaScript functionality remains unchanged
-        // [Include all previous JavaScript code here]
+            start() {
+                const animate = () => {
+                    drawMatrix();
+                    if(this.isRunning) this.animationFrame = requestAnimationFrame(animate);
+                };
+                animate();
+            }
+
+            stop() {
+                this.isRunning = false;
+                cancelAnimationFrame(this.animationFrame);
+            }
+        }
+
+        const quantumMatrix = new QuantumSystem();
+        quantumMatrix.start();
+
+        // Responsive Handler
+        window.addEventListener('resize', () => {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
+
+        // Previous functionality remains
     </script>
 </body>
 </html>
