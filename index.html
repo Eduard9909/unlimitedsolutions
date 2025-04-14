@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNLIMITED.xyz | Cyber Support Nexus</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><style>.soul{filter:url(%23pulse);fill:url(%23grad);} @keyframes beat{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}.pulse{animation:beat 1.5s infinite;}</style><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%239433ff'/><stop offset='100%' style='stop-color:%23e879f9'/></linearGradient><filter id='pulse'><feGaussianBlur in='SourceAlpha' stdDeviation='4' result='blur'/><feOffset in='blur' dx='0' dy='0' result='offsetBlur'/><feMerge><feMergeNode in='offsetBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><circle class='soul pulse' cx='50' cy='50' r='45'/></svg>">
     <style>
         @keyframes purple-pulse {
@@ -23,15 +22,23 @@
         .cyber-input:focus {
             box-shadow: 0 0 15px #9333ff;
         }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden" onload="playBootSound()">
-    <canvas class="matrix-bg fixed top-0 left-0 z-0" id="matrixCanvas"></canvas>
+    <canvas class="matrix-bg" id="matrixCanvas"></canvas>
 
     <!-- Status Bar -->
     <div class="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-xl z-50 p-3 border-t border-purple-500/20">
         <div class="container mx-auto flex justify-between items-center text-sm">
             <div class="flex items-center space-x-4">
+                <div id="userGreeting" class="text-purple-400"></div>
                 <div id="location" class="text-purple-400"></div>
                 <div id="systemTime" class="font-mono"></div>
             </div>
@@ -110,14 +117,29 @@
             });
         }
 
-        // GeoIP Lookup
-        async function getLocation() {
+        // User Detection
+        async function detectUser() {
+            const savedName = localStorage.getItem('unlimitedUser');
+            if(savedName) {
+                document.getElementById('userGreeting').innerHTML = `USER: ${savedName} <span class="text-xs opacity-75">(Recognized)</span>`;
+                return;
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const formName = params.get('name');
+            if(formName) {
+                localStorage.setItem('unlimitedUser', formName);
+                document.getElementById('userGreeting').innerHTML = `USER: ${formName} <span class="text-xs opacity-75">(Registered)</span>`;
+                return;
+            }
+
             try {
                 const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
-                document.getElementById('location').textContent = 
-                    `ORIGIN: ${data.country_name} [${data.ip}]`;
+                document.getElementById('userGreeting').textContent = `USER: ${data.ip} (Anonymous)`;
+                document.getElementById('location').textContent = `ORIGIN: ${data.country_name}`;
             } catch {
+                document.getElementById('userGreeting').textContent = 'USER: Undefined';
                 document.getElementById('location').textContent = 'ORIGIN: CLASSIFIED';
             }
         }
@@ -157,17 +179,24 @@
             oscillator.stop(audioContext.currentTime + 0.3);
         }
 
-        // Initialize
-        setInterval(drawMatrix, 50);
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-        getLocation();
+        // Event Listeners
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const nameInput = document.querySelector('input[name="name"]');
+            if(nameInput.value.trim()) {
+                localStorage.setItem('unlimitedUser', nameInput.value.trim());
+            }
+        });
 
-        // Resize Handler
         window.addEventListener('resize', () => {
             matrixCanvas.width = window.innerWidth;
             matrixCanvas.height = window.innerHeight;
         });
+
+        // Initialize
+        setInterval(drawMatrix, 50);
+        setInterval(updateDateTime, 1000);
+        detectUser();
+        updateDateTime();
     </script>
 </body>
 </html>
