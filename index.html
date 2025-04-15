@@ -7,13 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%230f0' d='M80 30c-10 0-17 7-20 14-3-7-10-14-20-14-15 0-27 12-27 27s12 27 27 27c10 0 17-7 20-14 3 7 10 14 20 14 15 0 27-12 27-27s-12-27-27-27zm-40 40c-8 0-14-6-14-14s6-14 14-14c6 0 10 3 13 7l-7 7c-2-2-4-3-6-3-4 0-7 3-7 7s3 7 7 7c2 0 4-1 6-3l7 7c-3 4-7 7-13 7zm40 0c-6 0-10-3-13-7l7-7c2 2 4 3 6 3 4 0 7-3 7-7s-3-7-7-7c-2 0-4 1-6 3l-7-7c3-4 7-7 13-7 8 0 14 6 14 14s-6 14-14 14z'/></svg>">
     <style>
-        /* Smooth scroll */
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Header styling */
         .main-header {
             position: fixed;
             top: 0;
@@ -22,9 +20,9 @@
             z-index: 50;
             backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+            background: rgba(0, 0, 0, 0.4);
         }
 
-        /* Enhanced logo */
         .header-logo {
             width: 60px;
             height: 60px;
@@ -32,11 +30,6 @@
             transition: all 0.3s ease;
         }
 
-        .header-logo:hover {
-            transform: scale(1.1) rotate(180deg);
-        }
-
-        /* Matrix canvas fix */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -44,27 +37,53 @@
             z-index: -1;
         }
 
-        /* Content spacing */
-        main {
-            margin-top: 120px;
+        .content-wrapper {
+            margin-top: 100px;
             position: relative;
             z-index: 20;
+        }
+
+        .matrix-input {
+            background: rgba(0, 30, 0, 0.2) !important;
+            border: 1px solid #0f03 !important;
+            color: #0f0 !important;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            backdrop-filter: blur(2px);
+        }
+
+        .matrix-input:focus {
+            border: 1px solid #0f0 !important;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.1) !important;
+        }
+
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            animation: scan 4s infinite linear;
+        }
+
+        @keyframes scan {
+            0% { transform: translate(-100%, -100%) rotate(45deg); }
+            100% { transform: translate(100%, 100%) rotate(45deg); }
         }
     </style>
 </head>
 <body class="bg-black text-white">
-    <!-- Matrix Canvas -->
     <canvas id="matrixCanvas"></canvas>
 
     <!-- Header -->
     <header class="main-header">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <!-- Logo -->
             <svg class="header-logo" viewBox="0 0 100 100">
                 <path fill="#0f0" d="M80 30c-10 0-17 7-20 14-3-7-10-14-20-14-15 0-27 12-27 27s12 27 27 27c10 0 17-7 20-14 3 7 10 14 20 14 15 0 27-12 27-27s-12-27-27-27zm-40 40c-8 0-14-6-14-14s6-14 14-14c6 0 10 3 13 7l-7 7c-2-2-4-3-6-3-4 0-7 3-7 7s3 7 7 7c2 0 4-1 6-3l7 7c-3 4-7 7-13 7zm40 0c-6 0-10-3-13-7l7-7c2 2 4 3 6 3 4 0 7-3 7-7s-3-7-7-7c-2 0-4 1-6 3l-7-7c3-4 7-7 13-7 8 0 14 6 14 14s-6 14-14 14z"/>
             </svg>
 
-            <!-- User Info -->
             <div class="user-greeting font-mono text-right">
                 <div class="text-green-500 text-sm">ACTIVE CONNECTION</div>
                 <div class="text-green-400 text-xs">
@@ -75,28 +94,203 @@
         </div>
     </header>
 
-    <!-- Keep the rest of the body content the same as previous version -->
-    <!-- [Main content, form, status bar, etc. from previous code here] -->
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <div class="container mx-auto px-4 md:px-6 py-8 md:py-12">
+            <div class="max-w-2xl mx-auto bg-black/70 backdrop-blur-lg p-4 md:p-6 border border-white/20">
+                <h2 class="text-xl md:text-3xl mb-4 md:mb-6 font-mono text-green-500 overflow-hidden">
+                    <span id="typingText"></span>
+                </h2>
+                
+                <!-- Contact Form -->
+                <form id="mainForm" action="https://formspree.io/f/mqapjaog" method="POST">
+                    <div class="space-y-4 md:space-y-6">
+                        <div>
+                            <label class="block text-green-500/80 mb-1 md:mb-2 text-sm md:text-base font-mono">
+                                ENTER FULL NAME
+                            </label>
+                            <input type="text" name="name" class="matrix-input w-full" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label class="block text-green-500/80 mb-1 md:mb-2 text-sm md:text-base font-mono">
+                                PRIMARY EMAIL FOR COMMUNICATION
+                            </label>
+                            <input type="email" name="email" class="matrix-input w-full" placeholder="user@domain.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-green-500/80 mb-1 md:mb-2 text-sm md:text-base font-mono">
+                                YOUR SERVICE REQUEST MESSAGE
+                            </label>
+                            <textarea name="message" class="matrix-input w-full h-24 md:h-32" placeholder="Describe your request..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-black/20 hover:bg-black/30 text-green-500 p-3 md:p-4 text-sm md:text-base font-mono transition-all border border-green-500/30 glow-effect">
+                            INITIATE ENCRYPTED MESSAGE
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Status Bar -->
+    <div class="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-xl z-50 p-2 md:p-3 border-t border-white/10">
+        <div class="container mx-auto flex justify-between items-center text-xs md:text-sm">
+            <div class="flex items-center space-x-2 md:space-x-4 font-mono">
+                <div id="systemTime" class="text-white truncate"></div>
+            </div>
+            <div class="flex space-x-2 md:space-x-4 font-mono">
+                <div id="liveClock" class="text-green-500"></div>
+                <div class="text-white hidden md:block">STATUS: SECURE</div>
+            </div>
+        </div>
+    </div>
+
+    <audio class="hidden" id="keyboardSound">
+        <source src="https://www.soundjay.com/buttons/button-35.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        // Optimized Matrix Effect
-        let matrixFrame;
-        function drawMatrix() {
-            // ... (keep existing matrix drawing code)
-            matrixFrame = requestAnimationFrame(drawMatrix);
+        // Matrix Effect
+        let matrixCanvas, ctx, chars, fontSize, columns, drops;
+        const specialWords = ["GOOGLE", "OPENAI", "HELLO WORLD", "BINARY", "EDUARD", "EDDIE", "TRUST IN"];
+
+        function initMatrix() {
+            matrixCanvas = document.getElementById('matrixCanvas');
+            ctx = matrixCanvas.getContext('2d');
+            resizeMatrix();
+            chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+            requestAnimationFrame(drawMatrix);
         }
 
-        // Initialize with optimized animation
+        function resizeMatrix() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            fontSize = window.innerWidth < 768 ? 12 : 14;
+            columns = Math.floor(matrixCanvas.width / fontSize);
+            drops = Array(columns).fill(0);
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            if(Math.random() < 0.02) {
+                const word = specialWords[Math.floor(Math.random() * specialWords.length)];
+                const x = Math.random() * (matrixCanvas.width - word.length * fontSize);
+                ctx.fillText(word, x, 20);
+            }
+
+            for(let i = 0; i < drops.length; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(char, x, y);
+                if(y > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+            requestAnimationFrame(drawMatrix);
+        }
+
+        // IP Detection
+        async function detectUser() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                document.getElementById('userIP').textContent = data.ip;
+                document.getElementById('userLocation').textContent = 
+                    `${data.city}, ${data.country_name}`;
+            } catch {
+                document.getElementById('userIP').textContent = 'IP: HIDDEN';
+                document.getElementById('userLocation').textContent = 'LOCATION: SECURE';
+            }
+        }
+
+        // Typing Effect
+        let currentMessage = 0;
+        const messages = ["Let us know how we can help you?"];
+        
+        function typeText() {
+            const text = messages[currentMessage];
+            let index = 0;
+            const typingElement = document.getElementById('typingText');
+            
+            function type() {
+                if(index < text.length) {
+                    typingElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 50);
+                } else {
+                    setTimeout(resetTyping, 2000);
+                }
+            }
+            type();
+        }
+
+        function resetTyping() {
+            document.getElementById('typingText').textContent = '';
+            typeText();
+        }
+
+        // Sound Effects
+        const keyboardSound = document.getElementById('keyboardSound');
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('keydown', () => {
+                keyboardSound.currentTime = 0;
+                keyboardSound.play();
+            });
+        });
+
+        // Form Handling
+        document.getElementById('mainForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const button = form.querySelector('button[type="submit"]');
+            button.disabled = true;
+            button.textContent = 'ENCRYPTING...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if(response.ok) {
+                    window.location.href = 'http://unlimitedsolutions.xyz/thanks.html';
+                } else {
+                    alert('Transmission failed. Please try again.');
+                }
+            } catch (error) {
+                alert('Network error. Please check your connection.');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'INITIATE ENCRYPTED MESSAGE';
+            }
+        });
+
+        // Initialize
         function init() {
             initMatrix();
-            drawMatrix(); // Use requestAnimationFrame instead of setInterval
-            // ... rest of initialization
+            typeText();
+            detectUser();
+            setInterval(() => {
+                document.getElementById('liveClock').textContent = 
+                    new Date().toLocaleTimeString('en-US', { hour12: false });
+                document.getElementById('systemTime').textContent = 
+                    new Date().toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: '2-digit' 
+                    });
+            }, 1000);
+
+            window.addEventListener('resize', resizeMatrix);
         }
 
-        // Cleanup on window close
-        window.addEventListener('beforeunload', () => {
-            cancelAnimationFrame(matrixFrame);
-        });
+        init();
     </script>
 </body>
 </html>
