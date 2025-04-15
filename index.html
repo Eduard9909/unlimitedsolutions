@@ -271,23 +271,36 @@
 
         // IP and Time Zone Detection
         async function detectUser() {
-            try {
-                const response = await fetch('https://ipapi.co/json/', {
-                    headers: { 'User-Agent': 'Mozilla/5.0' }
-                });
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                document.getElementById('userIP').textContent = data.ip || 'Unknown';
-                document.getElementById('userLocation').textContent = 
-                    `${data.city || 'Unknown'}, ${data.country_name || 'Unknown'}`;
-                
-                updateTime(data.timezone || 'UTC');
-            } catch (error) {
-                console.error('Error fetching IP data:', error);
-                document.getElementById('userIP').textContent = 'Unknown';
-                document.getElementById('userLocation').textContent = 'Unknown';
-                updateTime('UTC');
+            const apis = [
+                'https://api.ipify.org?format=json',
+                'https://freeipapi.com/api/json',
+                'https://ipapi.co/json/'
+            ];
+
+            for (const api of apis) {
+                try {
+                    const response = await fetch(api, {
+                        headers: { 'User-Agent': 'Mozilla/5.0' }
+                    });
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const data = await response.json();
+                    const ip = data.ip || 'Unknown';
+                    const city = data.city || data.region_name || 'Unknown';
+                    const country = data.country_name || data.country || 'Unknown';
+                    const timezone = data.timezone || 'UTC';
+
+                    document.getElementById('userIP').textContent = ip;
+                    document.getElementById('userLocation').textContent = `${city}, ${country}`;
+                    updateTime(timezone);
+                    return;
+                } catch (error) {
+                    console.error(`Error with API ${api}:`, error);
+                }
             }
+
+            document.getElementById('userIP').textContent = 'Error';
+            document.getElementById('userLocation').textContent = 'Error';
+            updateTime('UTC');
         }
 
         function updateTime(timezone) {
@@ -422,7 +435,7 @@
             if (hours === 1) total = 25;
             else if (hours === 1.5) total = 35;
             else if (hours === 2) total = 50;
-            else total = 50 + (hours - 2) * 25; // $25 per additional hour
+            else total = 50 + (hours - 2) * 25;
             calcTotal.textContent = total.toFixed(2);
         }
 
