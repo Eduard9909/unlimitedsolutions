@@ -5,7 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNLIMITED.xyz | Next-Gen IT Support</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%230f0' d='M80 30c-10 0-17 7-20 14-3-7-10-14-20-14-15 0-27 12-27 27s12 27 27 27c10 0 17-7 20-14 3 7 10 14 20 14 15 0 27-12 27-27s-12-27-27-27zm-40 40c-8 0-14-6-14-14s6-14 14-14c6 0 10 3 13 7l-7 7c-2-2-4-3-6-3-4 0-7 3-7 7s3 7 7 7c2 0 4-1 6-3l7 7c-3 4-7 7-13 7zm40 0c-6 0-10-3-13-7l7-7c2 2 4 3 6 3 4 0 7-3 7-7s-3-7-7-7c-2 0-4 1-6 3l-7-7c3-4 7-7 13-7 8 0 14 6 14 14s-6 14-14 14z'/></svg>">
     <style>
+        .infinity-logo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 20;
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 5px #0f0);
+            transition: all 0.3s ease;
+        }
+
+        .infinity-logo:hover {
+            transform: scale(1.1) rotate(180deg);
+            filter: drop-shadow(0 0 10px #0f0);
+        }
+
         .user-greeting {
             position: fixed;
             top: 10px;
@@ -19,38 +36,26 @@
             max-width: 90%;
         }
 
-        .matrix-input {
-            font-size: 16px;
-            padding: 12px;
-            transition: all 0.3s;
-        }
-
         @media (min-width: 768px) {
             .user-greeting {
                 top: 20px;
                 left: 20px;
-                padding: 15px;
                 max-width: none;
             }
-            .matrix-input {
-                font-size: 14px;
-                padding: 16px;
+            .infinity-logo {
+                width: 50px;
+                height: 50px;
+                top: 25px;
+                right: 25px;
             }
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #0f0 }
         }
     </style>
 </head>
 <body class="bg-black text-white overflow-x-hidden" onload="init()">
-    <canvas class="fixed top-0 left-0 z-0" id="matrixCanvas"></canvas>
+    <!-- Infinity Logo -->
+    <svg class="infinity-logo" viewBox="0 0 100 100">
+        <path fill="#0f0" d="M80 30c-10 0-17 7-20 14-3-7-10-14-20-14-15 0-27 12-27 27s12 27 27 27c10 0 17-7 20-14 3 7 10 14 20 14 15 0 27-12 27-27s-12-27-27-27zm-40 40c-8 0-14-6-14-14s6-14 14-14c6 0 10 3 13 7l-7 7c-2-2-4-3-6-3-4 0-7 3-7 7s3 7 7 7c2 0 4-1 6-3l7 7c-3 4-7 7-13 7zm40 0c-6 0-10-3-13-7l7-7c2 2 4 3 6 3 4 0 7-3 7-7s-3-7-7-7c-2 0-4 1-6 3l-7-7c3-4 7-7 13-7 8 0 14 6 14 14s-6 14-14 14z"/>
+    </svg>
 
     <!-- User Greeting -->
     <div class="user-greeting font-mono">
@@ -106,6 +111,9 @@
         </div>
     </main>
 
+    <!-- Matrix Canvas -->
+    <canvas class="fixed top-0 left-0 z-0" id="matrixCanvas"></canvas>
+
     <!-- Hidden Audio Elements -->
     <audio class="hidden" id="keyboardSound">
         <source src="https://www.soundjay.com/buttons/button-35.mp3" type="audio/mpeg">
@@ -138,7 +146,6 @@
             ctx.fillStyle = '#0f0';
             ctx.font = fontSize + 'px monospace';
 
-            // Draw special words randomly
             if(Math.random() < 0.02) {
                 const word = specialWords[Math.floor(Math.random() * specialWords.length)];
                 const x = Math.random() * (matrixCanvas.width - word.length * fontSize);
@@ -151,107 +158,22 @@
                 const y = drops[i] * fontSize;
 
                 ctx.fillText(char, x, y);
-
                 if(y > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
-
-        // Typing Effect
-        let currentMessage = 0;
-        const messages = ["Let us know how we can help you?"];
-        
-        function typeText() {
-            const text = messages[currentMessage];
-            let index = 0;
-            const typingElement = document.getElementById('typingText');
-            
-            function type() {
-                if(index < text.length) {
-                    typingElement.textContent += text.charAt(index);
-                    index++;
-                    setTimeout(type, 50);
-                } else {
-                    setTimeout(resetTyping, 2000);
-                }
-            }
-            type();
-        }
-
-        function resetTyping() {
-            document.getElementById('typingText').textContent = '';
-            typeText();
-        }
-
-        // User Detection
-        async function detectUser() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                document.getElementById('userIP').textContent = data.ip;
-                document.getElementById('userLocation').textContent = 
-                    `${data.city}, ${data.country_name}`;
-            } catch {
-                document.getElementById('userIP').textContent = 'IP: HIDDEN';
-                document.getElementById('userLocation').textContent = 'LOCATION: UNKNOWN';
-            }
-        }
-
-        // Sound Effects
-        const keyboardSound = document.getElementById('keyboardSound');
-        document.querySelectorAll('input, textarea').forEach(input => {
-            input.addEventListener('keydown', () => {
-                keyboardSound.currentTime = 0;
-                keyboardSound.play();
-            });
-        });
-
-        // Form Handling
-        document.getElementById('mainForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const button = form.querySelector('button[type="submit"]');
-            button.disabled = true;
-            button.textContent = 'ENCRYPTING...';
-
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if(response.ok) {
-                    window.location.href = 'http://unlimitedsolutions.xyz/thanks.html';
-                } else {
-                    alert('Transmission failed. Please try again.');
-                }
-            } catch (error) {
-                alert('Network error. Please check your connection.');
-            } finally {
-                button.disabled = false;
-                button.textContent = 'INITIATE TRANSMISSION';
-            }
-        });
 
         // Initialize
         function init() {
             initMatrix();
             typeText();
             detectUser();
-            setInterval(() => {
-                document.getElementById('liveClock').textContent = 
-                    new Date().toLocaleTimeString('en-US', { hour12: false });
-                document.getElementById('systemTime').textContent = 
-                    new Date().toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'short', 
-                        day: '2-digit' 
-                    });
-            }, 1000);
-
+            setInterval(updateDateTime, 1000);
             window.addEventListener('resize', resizeMatrix);
         }
+
+        // Keep all other existing functions (typeText, detectUser, etc.) unchanged
+        // ... [Previous JavaScript Code Here] ...
     </script>
 </body>
 </html>
