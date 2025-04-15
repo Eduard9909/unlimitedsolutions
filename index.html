@@ -38,9 +38,13 @@
         }
 
         .content-wrapper {
-            margin-top: 80px;
+            margin-top: 120px;
             position: relative;
             z-index: 20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px);
         }
 
         .matrix-input {
@@ -79,13 +83,43 @@
             border-radius: 8px;
         }
 
+        .feature-button {
+            transition: all 0.3s ease;
+        }
+
+        .feature-button:hover {
+            background-color: rgba(0, 255, 0, 0.1) !important;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .submit-button {
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: rgba(0, 255, 0, 0.1) !important;
+            transform: scale(1.02);
+            box-shadow: 0 0 12px rgba(0, 255, 0, 0.3);
+        }
+
+        .modal-button {
+            transition: all 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background-color: rgba(0, 255, 0, 0.1) !important;
+            transform: scale(1.05);
+        }
+
         @media (max-width: 640px) {
             .main-header {
                 padding: 8px;
             }
 
             .content-wrapper {
-                margin-top: 64px;
+                margin-top: 80px;
+                min-height: calc(100vh - 80px);
             }
 
             .header-logo {
@@ -138,10 +172,10 @@
 
                 <!-- Features Section -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                    <button id="statusBtn" class="bg-black/20 hover:bg-black/30 text-green-500 p-2 text-xs sm:text-sm font-mono transition-all border border-green-500/30">
+                    <button id="statusBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30">
                         SYSTEM STATUS
                     </button>
-                    <button id="calcBtn" class="bg-black/20 hover:bg-black/30 text-green-500 p-2 text-xs sm:text-sm font-mono transition-all border border-green-500/30">
+                    <button id="calcBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30">
                         COST CALCULATOR
                     </button>
                 </div>
@@ -170,7 +204,7 @@
                         <p class="text-green-400 text-xs font-mono">
                             Note: Remote support requires a reliable internet connection. For hardware support, provide your contact number in the message. No support granted before payment.
                         </p>
-                        <button type="submit" class="w-full bg-black/20 hover:bg-black/30 text-green-500 p-3 text-xs sm:text-sm font-mono transition-all border border-green-500/30">
+                        <button type="submit" class="submit-button w-full bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
                             INITIATE ENCRYPTED MESSAGE
                         </button>
                     </div>
@@ -198,7 +232,7 @@
         <div class="modal-content">
             <h3 class="text-green-500 font-mono mb-3 text-sm sm:text-base">SYSTEM STATUS</h3>
             <div id="statusOutput" class="font-mono text-green-400 text-xs sm:text-sm"></div>
-            <button id="statusClose" class="mt-3 text-green-500 font-mono text-xs sm:text-sm">CLOSE</button>
+            <button id="statusClose" class="modal-button mt-3 text-green-500 font-mono text-xs sm:text-sm">CLOSE</button>
         </div>
     </div>
 
@@ -216,9 +250,9 @@
                     </select>
                 </div>
                 <div class="text-green-400 font-mono text-xs sm:text-sm">Total: $<span id="calcTotal">25</span></div>
-                <button id="calcSubmit" class="bg-black/20 hover:bg-black/30 text-green-500 p-2 w-full font-mono border border-green-500/30 text-xs sm:text-sm">CALCULATE</button>
-                <button id="calcClose" class="text-green-500 font-mono text-xs sm:text-sm">CLOSE</button>
-            </div>
+                <button id="calcSubmit" class="modal-button bg-black/20 text-green-500 p-2 w-full font-mono border border-green-500/30 text-xs sm:text-sm">CALCULATE</button>
+                <button id="calcClose" class="modal-button text-green-500 font-mono text-xs sm:text-sm">CLOSE</button>
+                </div>
         </div>
     </div>
 
