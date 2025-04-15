@@ -1,0 +1,428 @@
+/* --- Base & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Body font */
+    background-color: #000000; /* Pure Black Background */
+    color: #FFFFFF; /* White Text */
+    line-height: 1.6;
+    font-size: 16px; /* Base font size */
+}
+
+/* --- Variables --- */
+:root {
+    --accent-color: #007bff; /* Electric Blue */
+    --accent-hover: #0056b3; /* Darker blue for hover */
+    --text-color: #FFFFFF;
+    --text-secondary: #cccccc; /* Slightly dimmer white */
+    --bg-color: #000000;
+    --bg-darker: #111111; /* Slightly less black for contrast */
+    --border-color: #333333; /* Subtle border */
+}
+
+/* --- Utility Classes --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Heading font */
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+h1 { font-size: 2.8rem; margin-bottom: 1.5rem; }
+h2 { font-size: 2.2rem; text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.4rem; margin-bottom: 0.8rem;}
+p { margin-bottom: 1rem; }
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    /* text-decoration: underline; */ /* Optional: remove underline globally */
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--bg-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.brand-logo:hover {
+    color: var(--text-color); /* Keep brand color on hover */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-weight: 600;
+    padding-bottom: 5px; /* Space for potential border */
+    border-bottom: 2px solid transparent; /* Prepare for hover effect */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active { /* Add 'active' class via JS if needed */
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+/* --- Mobile Menu --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Buttons --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600; /* Use Open Sans bold */
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-hover);
+    color: var(--text-color);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.secondary-cta {
+    color: var(--text-secondary);
+    margin-left: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.secondary-cta:hover {
+    color: var(--accent-color);
+}
+
+
+/* --- Sections --- */
+section {
+    padding: 60px 0;
+}
+
+.darker-section {
+    background-color: var(--bg-darker);
+}
+
+/* Hero Section */
+#hero {
+    min-height: 70vh; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Optional: Subtle background pattern/gradient */
+    /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('your-subtle-bg.jpg') no-repeat center center/cover; */
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.sub-headline {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* How It Works Section */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.step .icon-placeholder {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    /* Replace with actual icon styles */
+    border: 1px solid var(--accent-color); /* Temporary placeholder */
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    font-size: 0.8rem; /* Make placeholder text small */
+}
+
+/* Services Overview Section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.service-item {
+    background-color: var(--bg-color); /* Contrast with darker section */
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1); /* Subtle glow with accent color */
+}
+
+
+.service-item .icon-placeholder {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+     /* Replace with actual icon styles */
+    border: 1px solid var(--accent-color); /* Temporary placeholder */
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 5px;
+    margin: 0 auto 1rem auto;
+    font-size: 0.7rem; /* Make placeholder text small */
+}
+
+.link-more {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: 600;
+}
+
+/* Why Choose Us Section */
+.advantages-list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 600px;
+    margin: 0 auto; /* Center the list */
+}
+
+.advantages-list li {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.advantages-list .checkmark {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-right: 0.8rem;
+}
+
+/* Testimonials Section */
+.testimonial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial {
+    background-color: var(--bg-darker);
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+.testimonial blockquote {
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.testimonial cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Contact Section */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    display: grid;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #222; /* Dark input background */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.contact-form button {
+    width: auto; /* Don't force full width */
+    justify-self: center; /* Center the button */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--bg-darker);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 40px; /* Space before footer */
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: var(--text-secondary);
+}
+
+footer a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.2rem; }
+
+    .navbar {
+        position: relative; /* Needed for absolute positioning of mobile menu */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger */
+        z-index: 1001; /* Above nav links */
+    }
+
+    .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-darker); /* Dark background for dropdown */
+        padding: 1rem 0;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-links li {
+        margin: 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block; /* Make links take full width */
+        padding: 1rem;
+        border-bottom: none; /* Remove bottom border for mobile */
+    }
+    .nav-links a:hover {
+         background-color: #333; /* Highlight on hover */
+         color: var(--accent-color);
+    }
+
+    /* Adjust grid layouts */
+    .steps-container,
+    .services-grid,
+    .testimonial-container {
+        grid-template-columns: 1fr; /* Stack items vertically */
+    }
+
+     #hero {
+        min-height: 50vh; /* Reduce hero height */
+    }
+}
+
+/* Mobile Menu Toggle Animation */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
