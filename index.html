@@ -4,25 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlimitedsolutions.xyz - Modern Remote IT Support</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts (Optional - Example: Montserrat for headings, Open Sans for body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Add Font Awesome for Icons (Optional) -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+    <!-- Note: No CSS link means default browser styling will apply -->
 </head>
 <body>
 
     <header>
-        <nav class="container navbar">
-            <a href="/" class="brand-logo">Unlimitedsolutions.xyz</a>
-            <button class="menu-toggle" aria-label="Toggle Navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
+        <h1>Unlimitedsolutions.xyz</h1>
+        <nav>
+            <ul>
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#services-overview">Services</a></li>
                 <li><a href="#why-us">Why Us</a></li>
@@ -30,154 +19,147 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <hr> <!-- Simple visual separator -->
     </header>
 
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="container hero-content">
-                <h1>Seamless, Unlimited Remote IT Support</h1>
-                <p class="sub-headline">Fast, reliable tech solutions for your home or business, right when you need them. We're Unlimitedsolutions.xyz.</p>
-                <a href="#contact" class="cta-button">Get Instant Support</a>
-                <a href="#pricing" class="secondary-cta">View Our Plans</a>
-            </div>
+            <h2>Seamless, Unlimited Remote IT Support</h2>
+            <p>Fast, reliable tech solutions for your home or business, right when you need them. We're Unlimitedsolutions.xyz.</p>
+            <p>
+                <a href="#contact">Get Instant Support</a> <!-- Will look like a standard link -->
+                <br>
+                <a href="#pricing">View Our Plans</a> <!-- Will look like a standard link -->
+            </p>
         </section>
+        <hr>
 
         <!-- How It Works Section -->
         <section id="how-it-works">
-            <div class="container">
-                <h2>How It Works</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <!-- Add Icon Here (e.g., <i class="fas fa-comments"></i>) -->
-                        <div class="icon-placeholder">[ICON: Chat]</div>
-                        <h3>1. Contact Us</h3>
-                        <p>Reach out via chat, email, or phone.</p>
-                    </div>
-                    <div class="step">
-                        <!-- Add Icon Here (e.g., <i class="fas fa-desktop"></i>) -->
-                        <div class="icon-placeholder">[ICON: Remote]</div>
-                        <h3>2. Connect Securely</h3>
-                        <p>We establish a secure remote connection.</p>
-                    </div>
-                    <div class="step">
-                         <!-- Add Icon Here (e.g., <i class="fas fa-tools"></i>) -->
-                         <div class="icon-placeholder">[ICON: Fix]</div>
-                        <h3>3. We Fix It</h3>
-                        <p>Our experts diagnose and resolve the issue.</p>
-                    </div>
-                     <div class="step">
-                         <!-- Add Icon Here (e.g., <i class="fas fa-check-circle"></i>) -->
-                         <div class="icon-placeholder">[ICON: Done]</div>
-                        <h3>4. You're Back Up!</h3>
-                        <p>Confirming the solution and providing tips.</p>
-                    </div>
-                </div>
-            </div>
+            <h2>How It Works</h2>
+            <ol>
+                <li>
+                    <h3>1. Contact Us</h3>
+                    <p>Reach out via chat, email, or phone.</p>
+                </li>
+                <li>
+                    <h3>2. Connect Securely</h3>
+                    <p>We establish a secure remote connection.</p>
+                </li>
+                <li>
+                    <h3>3. We Fix It</h3>
+                    <p>Our experts diagnose and resolve the issue.</p>
+                </li>
+                 <li>
+                    <h3>4. You're Back Up!</h3>
+                    <p>Confirming the solution and providing tips.</p>
+                </li>
+            </ol>
         </section>
+        <hr>
 
         <!-- Services Overview Section -->
-        <section id="services-overview" class="darker-section">
-            <div class="container">
-                <h2>What We Solve</h2>
-                <div class="services-grid">
-                    <div class="service-item">
-                        <div class="icon-placeholder">[ICON: PC/Mac]</div>
-                        <h3>PC & Mac Issues</h3>
-                        <p>Slow performance, errors, hardware setup, and more.</p>
-                    </div>
-                    <div class="service-item">
-                         <div class="icon-placeholder">[ICON: Network]</div>
-                        <h3>Network & Wi-Fi</h3>
-                        <p>Connectivity problems, router setup, signal boosting.</p>
-                    </div>
-                    <div class="service-item">
-                         <div class="icon-placeholder">[ICON: Shield]</div>
-                        <h3>Virus & Malware</h3>
-                        <p>Removal, protection setup, security checks.</p>
-                    </div>
-                    <div class="service-item">
-                         <div class="icon-placeholder">[ICON: Software]</div>
-                        <h3>Software Support</h3>
-                        <p>Installation, updates, troubleshooting common apps.</p>
-                    </div>
-                </div>
-                 <a href="#" class="link-more">Explore All Services →</a> <!-- Link to a full services page later -->
+        <section id="services-overview">
+            <h2>What We Solve</h2>
+            <div>
+                <h3>PC & Mac Issues</h3>
+                <p>Slow performance, errors, hardware setup, and more.</p>
             </div>
+            <div>
+                <h3>Network & Wi-Fi</h3>
+                <p>Connectivity problems, router setup, signal boosting.</p>
+            </div>
+            <div>
+                <h3>Virus & Malware</h3>
+                <p>Removal, protection setup, security checks.</p>
+            </div>
+             <div>
+                <h3>Software Support</h3>
+                <p>Installation, updates, troubleshooting common apps.</p>
+            </div>
+            <p><a href="#">Explore All Services →</a></p> <!-- Link to a potential full services page -->
         </section>
+        <hr>
 
         <!-- Why Choose Us Section -->
         <section id="why-us">
-            <div class="container">
-                <h2>The Unlimited Solutions Advantage</h2>
-                <ul class="advantages-list">
-                    <li><span class="checkmark">✔</span> Fast Response Times</li>
-                    <li><span class="checkmark">✔</span> Certified Technicians</li>
-                    <li><span class="checkmark">✔</span> Unlimited Support Options*</li>
-                    <li><span class="checkmark">✔</span> Secure & Confidential</li>
-                    <li><span class="checkmark">✔</span> Proactive Security Focus</li>
-                    <li><span class="checkmark">✔</span> Affordable & Transparent Plans</li>
-                </ul>
-                 <p style="font-size: 0.8rem; margin-top: 1rem;">*Based on selected plan.</p>
-            </div>
+            <h2>The Unlimited Solutions Advantage</h2>
+            <ul>
+                <li>Fast Response Times</li>
+                <li>Certified Technicians</li>
+                <li>Unlimited Support Options*</li>
+                <li>Secure & Confidential</li>
+                <li>Proactive Security Focus</li>
+                <li>Affordable & Transparent Plans</li>
+            </ul>
+            <p><small>*Based on selected plan.</small></p>
         </section>
+        <hr>
 
-         <!-- Pricing Teaser Section (Link to full pricing page) -->
-        <section id="pricing" class="darker-section">
-            <div class="container text-center">
-                 <h2>Simple, Transparent Pricing</h2>
-                 <p>Choose the plan that fits your needs, from one-time fixes to unlimited support.</p>
-                 <a href="#" class="cta-button">See Pricing Plans</a> <!-- Link to full pricing page later -->
-            </div>
+         <!-- Pricing Teaser Section -->
+        <section id="pricing">
+             <h2>Simple, Transparent Pricing</h2>
+             <p>Choose the plan that fits your needs, from one-time fixes to unlimited support.</p>
+             <p><a href="#">See Pricing Plans</a></p> <!-- Link to potential full pricing page -->
         </section>
+        <hr>
 
         <!-- Testimonials Section -->
         <section id="testimonials">
-            <div class="container">
-                <h2>What Our Clients Say</h2>
-                <div class="testimonial-container">
-                    <article class="testimonial">
-                        <blockquote>
-                            "Incredibly fast response and fixed my issue within minutes. Highly recommend Unlimitedsolutions.xyz!"
-                        </blockquote>
-                        <cite>- Jane D., Home User</cite>
-                    </article>
-                    <article class="testimonial">
-                        <blockquote>
-                            "Our small business relies on them. Consistent, knowledgeable support that keeps us running smoothly."
-                        </blockquote>
-                        <cite>- John S., Business Owner</cite>
-                    </article>
-                </div>
-            </div>
+            <h2>What Our Clients Say</h2>
+            <article>
+                <blockquote>
+                    <p>"Incredibly fast response and fixed my issue within minutes. Highly recommend Unlimitedsolutions.xyz!"</p>
+                </blockquote>
+                <cite>- Jane D., Home User</cite>
+            </article>
+            <br> <!-- Simple spacing -->
+            <article>
+                 <blockquote>
+                    <p>"Our small business relies on them. Consistent, knowledgeable support that keeps us running smoothly."</p>
+                </blockquote>
+                <cite>- John S., Business Owner</cite>
+            </article>
         </section>
+        <hr>
 
-         <!-- Contact/Final CTA Section -->
-        <section id="contact" class="darker-section">
-            <div class="container text-center">
-                <h2>Ready to End Your Tech Frustrations?</h2>
-                <p>Contact us today for a free consultation or immediate support.</p>
-                 <form class="contact-form">
-                     <input type="text" name="name" placeholder="Your Name" required>
-                     <input type="email" name="email" placeholder="Your Email" required>
-                     <textarea name="message" placeholder="How can we help?" rows="4" required></textarea>
-                     <button type="submit" class="cta-button">Send Message</button>
-                 </form>
-                 <p>Or email us at: <a href="mailto:support@unlimitedsolutions.xyz">support@unlimitedsolutions.xyz</a></p>
-            </div>
+         <!-- Contact Section -->
+        <section id="contact">
+            <h2>Ready to End Your Tech Frustrations?</h2>
+            <p>Contact us today for a free consultation or immediate support.</p>
+
+            <form action="#" method="post"> <!-- Action="#" is a placeholder -->
+                 <div>
+                     <label for="name">Name:</label><br>
+                     <input type="text" id="name" name="name" required>
+                 </div>
+                 <br>
+                 <div>
+                     <label for="email">Email:</label><br>
+                     <input type="email" id="email" name="email" required>
+                 </div>
+                 <br>
+                 <div>
+                     <label for="message">Message:</label><br>
+                     <textarea id="message" name="message" rows="4" required></textarea>
+                 </div>
+                 <br>
+                 <button type="submit">Send Message</button> <!-- Basic HTML button -->
+             </form>
+
+             <p>Or email us at: <a href="mailto:support@unlimitedsolutions.xyz">support@unlimitedsolutions.xyz</a></p>
         </section>
-
     </main>
+    <hr>
 
     <footer>
-        <div class="container">
-            <p>© <span id="current-year"></span> Unlimitedsolutions.xyz. All Rights Reserved.</p>
-            <p>
-                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-            </p>
-        </div>
+        <p>© 2023 Unlimitedsolutions.xyz. All Rights Reserved.</p> <!-- Year is hardcoded -->
+        <p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Note: No JavaScript file linked -->
 </body>
 </html>
