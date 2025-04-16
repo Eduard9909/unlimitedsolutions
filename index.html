@@ -113,6 +113,16 @@
             transform: scale(1.05);
         }
 
+        @keyframes subtleFlash {
+            0% { box-shadow: 0 0 0 rgba(0, 255, 0, 0); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); }
+            100% { box-shadow: 0 0 0 rgba(0, 255, 0, 0); }
+        }
+
+        .flash-on-load {
+            animation: subtleFlash 1s ease-in-out;
+        }
+
         @media (max-width: 640px) {
             .main-header {
                 padding: 8px;
@@ -206,11 +216,11 @@
                             Note: Remote support requires a reliable internet connection. For hardware support, provide your contact number in the message. No support granted before payment.
                         </p>
                         <div class="flex space-x-2">
-                            <button type="submit" class="submit-button flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
+                            <button type="submit" class="submit-button flash-on-load flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
                                 INITIATE ENCRYPTED MESSAGE
                             </button>
-                            <button type="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/eduard-vdeventer'});return false;" class="submit-button flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
-                                SCHEDULE TIME
+                            <button type="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/eduard-unlimitedsolutions/how-can-we-assist'});return false;" class="submit-button flash-on-load flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
+                                Schedule Online Meeting
                             </button>
                         </div>
                     </div>
@@ -545,6 +555,13 @@
             typeText();
             detectUser();
             window.addEventListener('resize', resizeMatrix);
+            // Initialize Calendly badge widget
+            Calendly.initBadgeWidget({
+                url: 'https://calendly.com/eduard-unlimitedsolutions/how-can-we-assist',
+                text: 'Schedule time with me',
+                color: '#001a00',
+                textColor: '#00ff00'
+            });
         }
 
         init();
