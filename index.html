@@ -205,9 +205,14 @@
                         <p class="text-green-400 text-xs font-mono">
                             Note: Remote support requires a reliable internet connection. For hardware support, provide your contact number in the message. No support granted before payment.
                         </p>
-                        <button type="submit" class="submit-button w-full bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
-                            INITIATE ENCRYPTED MESSAGE
-                        </button>
+                        <div class="flex space-x-2">
+                            <button type="submit" class="submit-button flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
+                                INITIATE ENCRYPTED MESSAGE
+                            </button>
+                            <button type="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/eduard-vdeventer'});return false;" class="submit-button flex-1 bg-black/20 text-green-500 p-3 text-xs sm:text-sm font-mono border border-green-500/30">
+                                SCHEDULE TIME
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -253,7 +258,7 @@
                 <div class="text-green-400 font-mono text-xs sm:text-sm">Total: $<span id="calcTotal">25</span></div>
                 <button id="calcSubmit" class="modal-button bg-black/20 text-green-500 p-2 w-full font-mono border border-green-500/30 text-xs sm:text-sm">CALCULATE</button>
                 <button id="calcClose" class="modal-button text-green-500 font-mono text-xs sm:text-sm">CLOSE</button>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -329,7 +334,7 @@
                     country = data.country_name || data.location?.country || data.country || 'Unknown';
                     timezone = data.timezone || data.location?.timezone || 'UTC';
                     lat = data.latitude || data.location?.lat || 0;
-                    lon = data.longitude || data.location?.ASPXAUTH || 0;
+                    lon = data.longitude || data.location?.lon || 0;
 
                     document.getElementById('userIP').textContent = ip;
                     document.getElementById('userLocation').textContent = `${city}, ${country}`;
@@ -530,17 +535,6 @@
             else total = 50 + (hours - 2) * 25;
             calcTotal.textContent = total.toFixed(2);
         }
-
-        // Calendly Badge Widget
-        window.onload = function() {
-            Calendly.initBadgeWidget({ 
-                url: 'https://calendly.com/eduard-vdeventer', 
-                text: 'Schedule time with me', 
-                color: '#000000', 
-                textColor: '#00ff00', 
-                branding: true 
-            });
-        };
 
         // Initialize
         function init() {
