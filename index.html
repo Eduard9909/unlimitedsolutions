@@ -175,44 +175,44 @@
 
     <!-- Main Content -->
     <main class="content-wrapper">
-        <div class="container mx-auto px-4 py-6">
+        <div class="container mx-auto px-4 py-6 ">
             <div class="max-w-xl mx-auto bg-black/70 backdrop-blur-lg p-4 border border-white/20">
                 <h2 class="text-lg sm:text-2xl mb-4 font-mono text-green-500 text-center overflow-hidden">
                     <span id="typingText"></span>
                 </h2>
 
                 <!-- Features Section -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                    <button id="statusBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-center">
+                    <button id="statusBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30 text-center">
                         SYSTEM STATUS
                     </button>
-                    <button id="calcBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30">
+                    <button id="calcBtn" class="feature-button bg-black/20 text-green-500 p-2 text-xs sm:text-sm font-mono border border-green-500/30 text-center">
                         COST CALCULATOR
                     </button>
                 </div>
 
                 <!-- Contact Form -->
                 <form id="mainForm" action="https://formspree.io/f/mqapjaog" method="POST">
-                    <div class="space-y-4">
+                    <div class="space-y-4 text-center">
                         <div>
                             <label class="block text-green-500/80 mb-1 text-xs sm:text-sm font-mono">
                                 ENTER FULL NAME
                             </label>
-                            <input type="text" name="name" class="matrix-input w-full text-sm" placeholder="John Doe" required>
+                            <input type="text" name="name" class="matrix-input w-full text-sm text-center placeholder:text-center" placeholder="John Doe" required>
                         </div>
                         <div>
                             <label class="block text-green-500/80 mb-1 text-xs sm:text-sm font-mono">
                                 PRIMARY EMAIL
                             </label>
-                            <input type="email" name="email" id="emailInput" class="matrix-input w-full text-sm" placeholder="user@domain.com" required>
+                            <input type="email" name="email" id="emailInput" class="matrix-input w-full text-sm text-center placeholder:text-center" placeholder="user@domain.com" required>
                         </div>
                         <div>
                             <label class="block text-green-500/80 mb-1 text-xs sm:text-sm font-mono">
                                 SERVICE REQUEST
                             </label>
-                            <textarea name="message" class="matrix-input w-full h-20 text-sm" placeholder="Describe your request. For hardware support, include your contact number." required></textarea>
+                            <textarea name="message" class="matrix-input w-full h-20 text-sm text-center placeholder:text-center" placeholder="Describe your request. For hardware support, include your contact number." required></textarea>
                         </div>
-                        <p class="text-green-400 text-xs font-mono">
+                        <p class="text-green-400 text-xs font-mono text-center">
                             Note: Remote support requires a reliable internet connection. For hardware support, provide your contact number in the message. No support granted before payment.
                         </p>
                         <div class="flex space-x-2">
@@ -434,7 +434,7 @@
 
         // Typing Effect
         let currentMessage = 0;
-        const messages = ["Let us know how we can help you?"];
+        const messages = ["Let us know how we can help?"];
 
         function typeText() {
             const text = messages[currentMessage];
