@@ -230,7 +230,7 @@
             <div class="flex items-center space-x-2 font-mono">
                 <div id="systemTime" class="text-white truncate"></div>
             </div>
-            <div class="text-white font-mono text-center"></div>
+            <div class="text-white font-mono text-center">Created by Eduard and AI</div>
             <div class="flex space-x-2 font-mono">
                 <div id="liveClock" class="text-green-500"></div>
                 <div class="text-white sm:block hidden">STATUS: SECURE</div>
@@ -374,7 +374,7 @@
 
         async function fetchWeather(lat, lon) {
             try {
-                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}¤t=temperature_2m,weathercode`);
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode`);
                 if (!response.ok) throw new Error('Weather API response was not ok');
                 const data = await response.json();
                 const temp = data.current.temperature_2m;
@@ -396,9 +396,7 @@
                 45: 'Fog',
                 48: 'Depositing rime fog',
                 51: 'Light drizzle',
-                53: 'Moderate
-
- drizzle',
+                53: 'Moderate drizzle',
                 55: 'Dense drizzle',
                 61: 'Light rain',
                 63: 'Moderate rain',
